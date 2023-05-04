@@ -96,13 +96,10 @@ internal class EmployeesServiceTests
     [Test]
     public async Task GivenThereIsNoEmployee_GetAsync_ReturnsNull()
     {
-        Employee employee = new Employee()
-        {
 
-        };
         Mock
             .Get(_repository)
-            .Setup(es => es.FindAsync().Result)
+            .Setup(es => es.FindAsync(0).Result)
             .Returns(null);
 
         Mock
