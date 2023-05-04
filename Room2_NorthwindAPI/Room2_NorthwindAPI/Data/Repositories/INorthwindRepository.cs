@@ -1,6 +1,6 @@
 ﻿namespace Room2_NorthwindAPI.Data.Repositories
 {
-    public interface INorthwindRepository
+    public interface INorthwindRepository<T>
     {
     }
 }
