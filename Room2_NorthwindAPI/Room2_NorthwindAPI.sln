@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33424.131
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Room2_NorthwindAPI", "Room2_NorthwindAPI\Room2_NorthwindAPI.csproj", "{ED6BB0B9-762F-4B3F-8DCB-1E40C7843434}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APITests", "APITests\APITests.csproj", "{7C0A7BA2-C080-4FFF-A7D8-26CB9FA52DDC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ED6BB0B9-762F-4B3F-8DCB-1E40C7843434}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED6BB0B9-762F-4B3F-8DCB-1E40C7843434}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED6BB0B9-762F-4B3F-8DCB-1E40C7843434}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED6BB0B9-762F-4B3F-8DCB-1E40C7843434}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C0A7BA2-C080-4FFF-A7D8-26CB9FA52DDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C0A7BA2-C080-4FFF-A7D8-26CB9FA52DDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C0A7BA2-C080-4FFF-A7D8-26CB9FA52DDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C0A7BA2-C080-4FFF-A7D8-26CB9FA52DDC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F4B5AF1F-447C-46E8-8EE6-C576AAB77197}
+	EndGlobalSection
+EndGlobal
