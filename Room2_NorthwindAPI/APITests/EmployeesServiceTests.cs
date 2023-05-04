@@ -19,7 +19,7 @@ internal class EmployeesServiceTests
     [OneTimeSetUp]
     private static void OneTimeSetup()
     {
-        _repository = Mock.Of<INorthwindRepository<Employee>>;
+        _repository = Mock.Of<INorthwindRepository>;
     }
 
     [Category("Happy Path")]
@@ -38,7 +38,7 @@ internal class EmployeesServiceTests
             .Setup(es => es.IsNull)
             .Returns(false);
 
-        var _sut = new NorthwindService<Employee>(_repository);
+        var _sut = new NorthwindService(_repository);
         var result = await _sut.GetAllAsync();
         Assert.That(result, Is.InstanceOf<IEnumerable<Employee>>);
         Assert.That(result.IsFalse);
@@ -49,7 +49,7 @@ internal class EmployeesServiceTests
     [Test]
     public async Task GivenThereAreNotEmployees_GetAllAsync_ReturnsNull()
     {
-        List<Employee> employees = new List<EmployeesController>();
+        List<Employee> employees = new List<Employee>();
 
         Mock
             .Get(_repository)
@@ -60,7 +60,7 @@ internal class EmployeesServiceTests
             .Setup(es => es.IsNull)
             .Returns(true);
 
-        var _sut = new NorthwindService<Employee>(_repository);
+        var _sut = new NorthwindService(_repository);
         var result = await _sut.GetAllAsync();
         Assert.That(result, Is.Null);
         Assert.That(result.IsTrue);
@@ -85,7 +85,7 @@ internal class EmployeesServiceTests
             .Setup(es => es.IsNull)
             .Returns(false);
 
-        var _sut = new NorthwindService<Employee>(_repository);
+        var _sut = new NorthwindService(_repository);
         var result = await _sut.FindAsync();
         Assert.That(result, Is.EqualTo(employee));
         Assert.That(result.IsNull.IsFalse);
@@ -105,6 +105,17 @@ internal class EmployeesServiceTests
         Mock
             .Get(_repository)
             .Setup(es => es.IsNull)
+            .Returns(true);
+    }
+
+    [Category("Happy Path")]
+    [Category("UpdateEmployee")]
+    [Test]
+    public async Task GivenThereIsAnEmployeeToUpdate_UpdateAsync_ReturnsTrue()
+    {
+        Mock
+            .Get(_repository)
+            .Setup(es => es.Update(employee))
             .Returns(true);
     }
 }
