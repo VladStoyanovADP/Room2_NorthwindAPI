@@ -7,11 +7,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 var dbConnection = builder.Configuration["DefaultConnection"];
 
+
+//Add services to the container.
 builder.Services.AddDbContext<NorthwindContext>(
 opt => opt.UseSqlServer(dbConnection));
 
-
-//Add services to the container.
 
 
 builder.Services.AddControllers()
@@ -21,7 +21,7 @@ builder.Services.AddControllers()
 //builder.Services.AddEndpointsApiExplorer();
 //builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped(typeof(INorthwindRepository<>), typeof(NorthwindRepository<>));
+builder.Services.AddScoped(typeof(INorthwindRepository), typeof(NorthwindRepository<>));
 //builder.Services.AddScoped(typeof(INorthwindService<>), typeof(NorthwindService<>));
 //builder.Services.AddScoped<INorthwindRepository<Supplier>, SuppliersRepository>();
 
