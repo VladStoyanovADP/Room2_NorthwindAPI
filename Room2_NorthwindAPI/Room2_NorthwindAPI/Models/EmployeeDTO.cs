@@ -2,14 +2,17 @@
 
 public class EmployeeDTO
 {
-    public int EmployeeId { get; set; }
-    public string LastName { get; set; } = null!;
+    public string FullName { get; set; }
 
-    public string FirstName { get; set; } = null!;
+    public string Location { get; set; }
 
-    public string? City { get; set; }
+    public byte[]? Photo { get; set; }
 
-    public string? PostalCode { get; set; }
+    public string? Notes { get; set; }
+
+    public int? ReportsTo { get; set; }
+
+    public string? PhotoPath { get; set; }
 
     public virtual ICollection<Employee> InverseReportsToNavigation { get; set; } = new List<Employee>();
 

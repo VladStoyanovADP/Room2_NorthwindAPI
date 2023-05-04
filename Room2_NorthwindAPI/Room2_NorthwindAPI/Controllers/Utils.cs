@@ -7,11 +7,14 @@ public class Utils
     public static EmployeeDTO EmployeeToDTO(Employee employee) =>
          new EmployeeDTO
          {
-             EmployeeId = employee.EmployeeId,
-             LastName = employee.LastName,
-             FirstName = employee.FirstName,
-             City = employee.City,
-             PostalCode = employee.PostalCode
+             FullName = employee.FullName,
+             Location = employee.Location,
+             Photo = employee.Photo,
+             Notes = employee.Notes,
+             ReportsTo = employee.ReportsTo,
+             PhotoPath = employee.PhotoPath,
+             InverseReportsToNavigation = employee.InverseReportsToNavigation,
+             ReportsToNavigation = employee.ReportsToNavigation
          };
 
 }
