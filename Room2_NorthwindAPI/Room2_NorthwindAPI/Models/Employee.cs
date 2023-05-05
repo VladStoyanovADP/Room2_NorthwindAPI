@@ -17,7 +17,6 @@ public partial class Employee
 
     public string? TitleOfCourtesy { get; set; } 
 
-    public string FullName => $"{TitleOfCourtesy} {FirstName} {LastName}, {TitleOfCourtesy}";
 
     // Birthday should be secret. Law requirement
     public DateTime? BirthDate { get; set; }
