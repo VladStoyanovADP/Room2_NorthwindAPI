@@ -57,12 +57,12 @@ namespace Room2_NorthwindAPI.Controllers
             
             //_context.Entry(employeeDTO).State = EntityState.Modified;  (idk)
 
-            var employee = await _employeeService.GetAsync(employeeDTO.EmployeeId);
+            var employee = await _employeeService.GetAsync(id);
 
 
             if (employee is null) return NotFound();
 
-            /*            
+                        
             employee.FullName = employeeDTO.FullName ?? employee.FullName;
             employee.Location = employeeDTO.Location ?? employee.Location;
             employee.ContactTitle = employeeDTO.ContactTitle ?? employee.ContactTitle;
