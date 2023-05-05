@@ -22,13 +22,9 @@ builder.Services.AddEndpointsApiExplorer();
 //builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped(typeof(INorthwindRepository), typeof(NorthwindRepository));
-<<<<<<< HEAD
-//builder.Services.AddScoped(typeof(INorthwindService<>), typeof(NorthwindService<>));
-//builder.Services.AddScoped<INorthwindRepository<Supplier>, SuppliersRepository>();
-=======
+
 builder.Services.AddScoped(typeof(INorthwindService), typeof(NorthwindService));
 builder.Services.AddScoped<INorthwindRepository, EmployeesRepository>();
->>>>>>> dev
 
 
 
