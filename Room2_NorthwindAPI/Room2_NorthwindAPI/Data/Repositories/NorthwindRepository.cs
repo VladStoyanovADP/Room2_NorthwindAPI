@@ -15,42 +15,49 @@ public class NorthwindRepository : INorthwindRepository
         _dbSet = context.Set<Employee>();
     }
 
-
-    public bool IsNull => throw new NotImplementedException();
+    public bool IsNull => _dbSet == null;
 
 
     public void Add(Employee entity)
     {
-        throw new NotImplementedException();
+        _dbSet.Add(entity);   
     }
 
     public void AddRange(IEnumerable<Employee> entities)
     {
-        throw new NotImplementedException();
+        _dbSet.AddRange(entities);
     }
 
+<<<<<<< HEAD
     public virtual async Task<Employee?> FindAsync(int id)
+=======
+    public async virtual Task<Employee?> FindAsync(int id)
+>>>>>>> dev
     {
         return await _dbSet.FindAsync(id);
     }
 
+<<<<<<< HEAD
     public virtual async Task<IEnumerable<Employee>> GetAllAsync()
+=======
+    public async virtual Task<IEnumerable<Employee>> GetAllAsync()
+>>>>>>> dev
     {
         return await _dbSet.ToListAsync();
     }
 
     public void Remove(Employee entity)
     {
-        throw new NotImplementedException();
+        _dbSet.Remove(entity);
     }
 
-    public Task SaveAsync()
+    public async Task SaveAsync()
     {
-        throw new NotImplementedException();
+        await _context.SaveChangesAsync();
     }
 
     public void Update(Employee entity)
     {
-        throw new NotImplementedException();
+        _dbSet.Update(entity);
     }
 }

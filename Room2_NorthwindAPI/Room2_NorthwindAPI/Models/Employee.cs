@@ -17,8 +17,10 @@ public partial class Employee
 
     public string? TitleOfCourtesy { get; set; } 
 
-    public string FullName => $"{TitleOfCourtesy} {FirstName} {LastName}, {TitleOfCourtesy}";
+<<<<<<< HEAD
+=======
 
+>>>>>>> Idris
     // Birthday should be secret. Law requirement
     public DateTime? BirthDate { get; set; }
 
@@ -35,9 +37,6 @@ public partial class Employee
     public string? PostalCode { get; set; }
 
     public string? Country { get; set; }
-
-    public string? Location => $"{City}, {Region}, {PostalCode}, {Country}";
-
     //Secret
     public string? HomePhone { get; set; }
 
