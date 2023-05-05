@@ -38,10 +38,9 @@ internal class EmployeesServiceTests
             .Setup(es => es.IsNull)
             .Returns(false);
 
-        var _sut = new NorthwindService(_repository);
+        var _sut = new NorthwindService();
         var result = await _sut.GetAllAsync();
-        Assert.That(result, Is.InstanceOf<IEnumerable<Employee>>);
-        Assert.That(result.IsFalse);
+        Assert.That(result, Is.EqualTo(employees));
     }
 
     [Category("Sad Path")]
@@ -60,7 +59,7 @@ internal class EmployeesServiceTests
             .Setup(es => es.IsNull)
             .Returns(true);
 
-        var _sut = new NorthwindService(_repository);
+        var _sut = new NorthwindService();
         var result = await _sut.GetAllAsync();
         Assert.That(result, Is.Null);
         Assert.That(result.IsTrue);
@@ -73,7 +72,11 @@ internal class EmployeesServiceTests
     {
         Employee employee = new Employee()
         {
-
+            EmployeeId = 55,
+            LastName = "Bloggs",
+            FirstName = "Dave",
+            Title = "Head Of Science things",
+            TitleOfCourtesy = "Mr"
         };
         Mock
             .Get(_repository)
@@ -85,10 +88,16 @@ internal class EmployeesServiceTests
             .Setup(es => es.IsNull)
             .Returns(false);
 
-        var _sut = new NorthwindService(_repository);
-        var result = await _sut.FindAsync();
+        var _sut = new NorthwindService();
+        var result = await _sut.GetAsync(55);
         Assert.That(result, Is.EqualTo(employee));
-        Assert.That(result.IsNull.IsFalse);
+        Assert.That(result.EmployeeId, Is.EqualTo(55));
+        Assert.That(result.LastName, Is.EqualTo("Bloggs"));
+        Assert.That(result.FirstName, Is.EqualTo("Dave"));
+        Assert.That(result.Title, Is.EqualTo("Head Of Science things"));
+        Assert.That(result.TitleOfCourtesy, Is.EqualTo("Mr"));
+        Assert.That(result.FullName, Is.EqualTo("Mr Dave Bloggs, Head Of Science things"));
+
     }
 
     [Category("Sad Path")]
