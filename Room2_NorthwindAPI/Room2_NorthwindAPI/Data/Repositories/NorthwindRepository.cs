@@ -15,7 +15,7 @@ public class NorthwindRepository : INorthwindRepository
         _dbSet = context.Set<Employee>();
     }
 
-    public bool IsNull => throw new NotImplementedException();
+    public bool IsNull => _dbSet == null;
 
 
     public void Add(Employee entity)
