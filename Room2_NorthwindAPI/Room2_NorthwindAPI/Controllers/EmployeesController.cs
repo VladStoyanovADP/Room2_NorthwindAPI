@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Room2_NorthwindAPI.Data.Repositories;
 using Room2_NorthwindAPI.Models;
+using Room2_NorthwindAPI.Services;
 
 namespace Room2_NorthwindAPI.Controllers
 {
@@ -14,6 +16,8 @@ namespace Room2_NorthwindAPI.Controllers
     public class EmployeesController : ControllerBase
     {
         private readonly NorthwindContext _context;
+        private readonly INorthwindRepository _employeesRepository;
+        private readonly INorthwindService _employeeService;
 
         public EmployeesController(NorthwindContext context)
         {
@@ -22,62 +26,59 @@ namespace Room2_NorthwindAPI.Controllers
 
         // GET: api/Employees
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees()
+        public async Task<ActionResult<IEnumerable<EmployeeDTO>>> GetEmployees()
         {
-          if (_context.Employees == null)
-          {
-              return NotFound();
-          }
-            return await _context.Employees.ToListAsync();
+            var employees = new List<EmployeeDTO>();
+            foreach (var item in _employeeService.GetAllAsync().Result)
+            {
+                employees.Add(Utils.EmployeeToDTO(item));
+            }
+            return employees;
         }
 
         // GET: api/Employees/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Employee>> GetEmployee(int id)
+        public async Task<ActionResult<EmployeeDTO>> GetEmployee(int id)
         {
-          if (_context.Employees == null)
-          {
-              return NotFound();
-          }
-            var employee = await _context.Employees.FindAsync(id);
+            var employee = await _employeeService.GetAsync(id);
 
             if (employee == null)
             {
                 return NotFound();
             }
-
-            return employee;
+            return Utils.EmployeeToDTO(employee);
         }
 
         // PUT: api/Employees/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutEmployee(int id, Employee employee)
+        public async Task<IActionResult> PutEmployee(int id, EmployeeDTO employeeDTO)
         {
-            if (id != employee.EmployeeId)
-            {
-                return BadRequest();
-            }
+            
+            //_context.Entry(employeeDTO).State = EntityState.Modified;  (idk)
 
-            _context.Entry(employee).State = EntityState.Modified;
+            var employee = await _employeeService.GetAsync(employeeDTO.EmployeeId);
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!EmployeeExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
 
-            return NoContent();
+            if (employee is null) return NotFound();
+
+            /*            
+            employee.FullName = employeeDTO.FullName ?? employee.FullName;
+            employee.Location = employeeDTO.Location ?? employee.Location;
+            employee.ContactTitle = employeeDTO.ContactTitle ?? employee.ContactTitle;
+            employee.Country = employeeDTO.Country ?? employee.Country;            
+             */
+            // We stopped here
+
+
+            bool valid = await _employeeService.UpdateAsync(id, employee);
+
+            if (valid)
+            {
+                return NoContent();
+
+            }
+            else return NotFound();
         }
 
         // POST: api/Employees
