@@ -7,6 +7,11 @@ namespace Room2_NorthwindAPI.Services;
 public class NorthwindService : INorthwindService
 {
     private readonly INorthwindRepository _repository;
+
+    public NorthwindService(INorthwindRepository repository)
+    {
+        _repository = repository;
+    }
    
     public async Task<bool> CreateAsync(Employee entity)
     {
