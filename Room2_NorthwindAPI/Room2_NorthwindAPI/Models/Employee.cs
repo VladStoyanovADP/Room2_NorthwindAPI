@@ -17,10 +17,6 @@ public partial class Employee
 
     public string? TitleOfCourtesy { get; set; } 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> Idris
     // Birthday should be secret. Law requirement
     public DateTime? BirthDate { get; set; }
 
