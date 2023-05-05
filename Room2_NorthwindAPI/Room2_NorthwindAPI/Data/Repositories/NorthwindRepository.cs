@@ -28,20 +28,12 @@ public class NorthwindRepository : INorthwindRepository
         _dbSet.AddRange(entities);
     }
 
-<<<<<<< HEAD
-    public virtual async Task<Employee?> FindAsync(int id)
-=======
     public async virtual Task<Employee?> FindAsync(int id)
->>>>>>> dev
     {
         return await _dbSet.FindAsync(id);
     }
 
-<<<<<<< HEAD
-    public virtual async Task<IEnumerable<Employee>> GetAllAsync()
-=======
     public async virtual Task<IEnumerable<Employee>> GetAllAsync()
->>>>>>> dev
     {
         return await _dbSet.ToListAsync();
     }

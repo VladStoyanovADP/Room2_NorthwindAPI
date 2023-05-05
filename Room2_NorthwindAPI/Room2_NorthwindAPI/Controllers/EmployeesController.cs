@@ -16,24 +16,32 @@ namespace Room2_NorthwindAPI.Controllers
     public class EmployeesController : ControllerBase
     {
         private readonly NorthwindContext _context;
-        private readonly INorthwindRepository _employeesRepository;
+        //private readonly INorthwindRepository _employeesRepository; (not needed)
         private readonly INorthwindService _employeeService;
+        
 
-        public EmployeesController(NorthwindContext context)
+        public EmployeesController(NorthwindContext context, INorthwindService employeeService)
         {
             _context = context;
+            _employeeService = employeeService;
         }
 
         // GET: api/Employees
         [HttpGet]
         public async Task<ActionResult<IEnumerable<EmployeeDTO>>> GetEmployees()
         {
-            var employees = new List<EmployeeDTO>();
-            foreach (var item in _employeeService.GetAllAsync().Result)
+            var employees = await _employeeService.GetAllAsync();
+            
+            /*foreach (var item in _employeeService.GetAllAsync().Result)
             {
                 employees.Add(Utils.EmployeeToDTO(item));
             }
-            return employees;
+            return employees;*/
+            if (employees is null)
+            {
+                return NotFound();
+            }
+            return employees.Select(e => Utils.EmployeeToDTO(e)).ToList();
         }
 
         // GET: api/Employees/5
