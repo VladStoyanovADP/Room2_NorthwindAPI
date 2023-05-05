@@ -1,32 +1,102 @@
-﻿using Room2_NorthwindAPI.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Room2_NorthwindAPI.Data.Repositories;
+using Room2_NorthwindAPI.Models;
 
 namespace Room2_NorthwindAPI.Services;
 
 public class NorthwindService : INorthwindService
 {
+    private readonly INorthwindRepository _repository;
    
-    public Task<bool> CreateAsync(Employee entity)
+    public async Task<bool> CreateAsync(Employee entity)
     {
-        throw new NotImplementedException();
+        if(_repository is null)
+        {
+            return false;
+        }
+        _repository.Add(entity);
+        await _repository.SaveAsync();
+        return true;
+
     }
 
-    public Task<bool> DeleteAsync(int id)
+    public async Task<bool> DeleteAsync(int id)
     {
-        throw new NotImplementedException();
+        var employeeToDelete = await _repository.FindAsync(id);
+
+        if(employeeToDelete is null)
+        {
+            return false;
+        }
+
+        _repository.Remove(employeeToDelete);
+
+        await _repository.SaveAsync();
+
+        return true;
+
+
     }
 
-    public Task<IEnumerable<Employee>?> GetAllAsync()
+    public async Task<IEnumerable<Employee>?> GetAllAsync()
     {
-        throw new NotImplementedException();
+        if (_repository.IsNull)
+        {
+            return null;
+        }
+        else
+        {
+            return await _repository.GetAllAsync();
+        }
+
     }
 
-    public Task<Employee?> GetAsync(int id)
+    public async Task<Employee?> GetAsync(int id)
     {
-        throw new NotImplementedException();
+        if(_repository.IsNull)
+        {
+            return null;
+        }
+
+        Employee employee = await _repository.FindAsync(id);
+
+        if(employee is null)
+        {
+            return null;
+        }
+
+        return employee;
+
+
     }
 
-    public Task<bool> UpdateAsync(int id, Employee entity)
+    public async Task<bool> UpdateAsync(int id, Employee entity)
     {
-        throw new NotImplementedException();
+        var employeeToUpdate = await _repository.FindAsync(id);
+        _repository.Update(employeeToUpdate);
+        try
+        {
+            await _repository.SaveAsync();
+        }
+        catch(DbUpdateConcurrencyException)
+        {
+            if (!await EmployeeExists(id))
+            {
+                return false;
+            }
+            else
+            {
+                throw;
+            }
+
+        }
+
+        return true;
+
+    }
+
+    private async Task<bool> EmployeeExists(int id)
+    {
+        return (await _repository.FindAsync(id)) is null;
     }
 }
