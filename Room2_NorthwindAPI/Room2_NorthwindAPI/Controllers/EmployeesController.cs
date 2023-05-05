@@ -62,12 +62,19 @@ namespace Room2_NorthwindAPI.Controllers
 
             if (employee is null) return NotFound();
 
-                        
-            employee.FullName = employeeDTO.FullName ?? employee.FullName;
-            employee.Location = employeeDTO.Location ?? employee.Location;
-            employee.ContactTitle = employeeDTO.ContactTitle ?? employee.ContactTitle;
+
             employee.Country = employeeDTO.Country ?? employee.Country;            
-             */
+            employee.City = employeeDTO.City ?? employee.City;            
+            employee.Region = employeeDTO.Region ?? employee.Region;            
+            employee.PostalCode = employeeDTO.PostalCode ?? employee.PostalCode;            
+            employee.Photo = employeeDTO.Photo ?? employee.Photo;            
+            employee.Notes = employeeDTO.Notes ?? employee.Notes;            
+            employee.ReportsTo = employeeDTO.ReportsTo ?? employee.ReportsTo;
+            employee.PhotoPath = employeeDTO.PhotoPath ?? employee.PhotoPath;
+            employee.InverseReportsToNavigation = employeeDTO.InverseReportsToNavigation ?? employee.InverseReportsToNavigation;
+            employee.ReportsToNavigation = employeeDTO.ReportsToNavigation ?? employee.ReportsToNavigation;
+            
+             
             // We stopped here
 
 
