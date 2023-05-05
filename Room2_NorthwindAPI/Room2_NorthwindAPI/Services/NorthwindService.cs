@@ -75,10 +75,10 @@ public class NorthwindService : INorthwindService
 
     }
 
-    public async Task<bool> UpdateAsync(int id, Employee entity)
+    public async Task<bool> UpdateAsync(int id, Employee employee)
     {
-        var employeeToUpdate = await _repository.FindAsync(id);
-        _repository.Update(employeeToUpdate);
+        _repository.Update(employee);
+
         try
         {
             await _repository.SaveAsync();

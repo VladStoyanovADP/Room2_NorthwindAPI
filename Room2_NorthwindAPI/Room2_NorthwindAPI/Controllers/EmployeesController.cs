@@ -60,7 +60,7 @@ namespace Room2_NorthwindAPI.Controllers
         // PUT: api/Employees/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutEmployee(int id, EmployeeDTO employeeDTO)
+        public async Task<IActionResult> PutEmployee(int id, [Bind("EmployeeId, Country, City, Region, PostalCode, Photo, Notes, ReportsTo, PhotoPath, InverseReportsToNavigation, ReportsToNavigation")] EmployeeDTO employeeDTO)
         {
             
             //_context.Entry(employeeDTO).State = EntityState.Modified;  (idk)
@@ -70,7 +70,10 @@ namespace Room2_NorthwindAPI.Controllers
 
             if (employee is null) return NotFound();
 
-
+            employee.LastName = employeeDTO.LastName ?? employee.LastName;
+            employee.FirstName = employeeDTO.FirstName ?? employee.FirstName;
+            employee.Title = employeeDTO.Title ?? employee.Title;
+            employee.TitleOfCourtesy = employeeDTO.TitleOfCourtesy ?? employee.TitleOfCourtesy;
             employee.Country = employeeDTO.Country ?? employee.Country;            
             employee.City = employeeDTO.City ?? employee.City;            
             employee.Region = employeeDTO.Region ?? employee.Region;            
@@ -81,14 +84,11 @@ namespace Room2_NorthwindAPI.Controllers
             employee.PhotoPath = employeeDTO.PhotoPath ?? employee.PhotoPath;
             employee.InverseReportsToNavigation = employeeDTO.InverseReportsToNavigation ?? employee.InverseReportsToNavigation;
             employee.ReportsToNavigation = employeeDTO.ReportsToNavigation ?? employee.ReportsToNavigation;
-            
-             
-            // We stopped here
 
 
-            bool valid = await _employeeService.UpdateAsync(id, employee);
+            //bool valid = await _employeeService.UpdateAsync(id, employee);
 
-            if (valid)
+            if (await _employeeService.UpdateAsync(id, employee))
             {
                 return NoContent();
 

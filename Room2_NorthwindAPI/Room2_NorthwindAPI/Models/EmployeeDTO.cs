@@ -2,7 +2,6 @@
 
 public class EmployeeDTO
 {
-
     public string LastName { get; set; } = null!;
 
     public string FirstName { get; set; } = null!;
@@ -11,7 +10,7 @@ public class EmployeeDTO
 
     public string? TitleOfCourtesy { get; set; }
 
-    public string FullName => $"{TitleOfCourtesy} {FirstName} {LastName}, {TitleOfCourtesy}";
+    public string FullName => $"{TitleOfCourtesy} {FirstName} {LastName}, {Title}";
 
     public string? City { get; set; }
 

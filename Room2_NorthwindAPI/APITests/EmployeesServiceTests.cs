@@ -40,7 +40,7 @@ internal class EmployeesServiceTests
             .Setup(es => es.IsNull)
             .Returns(false);
 
-        var _sut = new NorthwindService();
+        var _sut = new NorthwindService(_repository);
         var result = await _sut.GetAllAsync();
         Assert.That(result, Is.EqualTo(employees));
     }
@@ -62,7 +62,7 @@ internal class EmployeesServiceTests
             .Setup(es => es.IsNull)
             .Returns(true);
 
-        var _sut = new NorthwindService();
+        var _sut = new NorthwindService(_repository);
         var result = await _sut.GetAllAsync();
         Assert.That(result, Is.Null);
         Assert.That(result.IsNullOrEmpty);
@@ -73,7 +73,7 @@ internal class EmployeesServiceTests
     [Test]
     public async Task GivenThereAreEmployees_GetAsync_ReturnsCorrectEmployee()
     {
-        var _repository = new Mock<INorthwindRepository>();
+        var _repository = Mock.Of<INorthwindRepository>();
 
 
         Employee employee = new Employee()
@@ -85,11 +85,12 @@ internal class EmployeesServiceTests
             TitleOfCourtesy = "Mr"
         };
 
-        _repository
+        Mock
+            .Get(_repository)
             .Setup(es => es.FindAsync(employee.EmployeeId))
             .Returns(Task.FromResult(employee));
 
-        var _sut = new NorthwindService();
+        var _sut = new NorthwindService(_repository);
 
 
         var result = await _sut.GetAsync(employee.EmployeeId);
@@ -103,31 +104,31 @@ internal class EmployeesServiceTests
 
     }
 
-/*    [Category("Sad Path")]
-    [Category("GetEmployee")]
-    [Test]
-    public async Task GivenThereIsNoEmployee_GetAsync_ReturnsNull()
-    {
+    /*    [Category("Sad Path")]
+        [Category("GetEmployee")]
+        [Test]
+        public async Task GivenThereIsNoEmployee_GetAsync_ReturnsNull()
+        {
 
-        Mock
-            .Get(_repository)
-            .Setup(es => es.FindAsync(0).Result)
-            .Returns(null);
+            Mock
+                .Get(_repository)
+                .Setup(es => es.FindAsync(0).Result)
+                .Returns(null);
 
-        Mock
-            .Get(_repository)
-            .Setup(es => es.IsNull)
-            .Returns(true);
-    }
+            Mock
+                .Get(_repository)
+                .Setup(es => es.IsNull)
+                .Returns(true);
+        }
 
-    [Category("Happy Path")]
-    [Category("UpdateEmployee")]
-    [Test]
-    public async Task GivenThereIsAnEmployeeToUpdate_UpdateAsync_ReturnsTrue()
-    {
-        Mock
-            .Get(_repository)
-            .Setup(es => es.Update(employee))
-            .Returns(true);
-    }*/
+        [Category("Happy Path")]
+        [Category("UpdateEmployee")]
+        [Test]
+        public async Task GivenThereIsAnEmployeeToUpdate_UpdateAsync_ReturnsTrue()
+        {
+            Mock
+                .Get(_repository)
+                .Setup(es => es.Update(employee))
+                .Returns(true);
+        }*/
 }
