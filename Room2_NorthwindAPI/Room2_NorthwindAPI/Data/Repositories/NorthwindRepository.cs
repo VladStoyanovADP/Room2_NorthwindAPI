@@ -1,4 +1,5 @@
-﻿using Room2_NorthwindAPI.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Room2_NorthwindAPI.Models;
 
 namespace Room2_NorthwindAPI.Data.Repositories;
 
@@ -6,10 +7,12 @@ public class NorthwindRepository : INorthwindRepository
 {
 
     private readonly NorthwindContext _context;
+    protected readonly DbSet<Employee> _dbSet;
 
     public NorthwindRepository(NorthwindContext context)
     {
         _context = context;
+        _dbSet = context.Set<Employee>();
     }
 
 
@@ -26,14 +29,14 @@ public class NorthwindRepository : INorthwindRepository
         throw new NotImplementedException();
     }
 
-    public Task<Employee?> FindAsync(int id)
+    public virtual async Task<Employee?> FindAsync(int id)
     {
-        throw new NotImplementedException();
+        return await _dbSet.FindAsync(id);
     }
 
-    public Task<IEnumerable<Employee>> GetAllAsync()
+    public virtual async Task<IEnumerable<Employee>> GetAllAsync()
     {
-        throw new NotImplementedException();
+        return await _dbSet.ToListAsync();
     }
 
     public void Remove(Employee entity)
