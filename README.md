@@ -110,6 +110,6 @@ The endpoints implemented, following the CRUD approach, are as follows:
 
 [Trello board](https://trello.com/b/qw9za4x1/apiproject)
 
-[Retrospective] (null)
+[Retrospective](https://metroretro.io/BOI6HWNUEIKP)
 
 [Presentation] (null)
