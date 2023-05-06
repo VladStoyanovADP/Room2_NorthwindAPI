@@ -1,6 +1,4 @@
-﻿using Room2_NorthwindAPI.Models;
-
-namespace Room2_NorthwindAPI.Controllers;
+﻿namespace Room2_NorthwindAPI.Models.DTO;
 
 public class Utils
 {
@@ -12,15 +10,8 @@ public class Utils
              Title = employee.Title,
              TitleOfCourtesy = employee.TitleOfCourtesy,
              City = employee.City,
-             Region = employee.Region,
              PostalCode = employee.PostalCode,
              Country = employee.Country,
-             Photo = employee.Photo,
-             Notes = employee.Notes,
-             ReportsTo = employee.ReportsTo,
-             PhotoPath = employee.PhotoPath,
-             InverseReportsToNavigation = employee.InverseReportsToNavigation,
-             ReportsToNavigation = employee.ReportsToNavigation
          };
 
 }

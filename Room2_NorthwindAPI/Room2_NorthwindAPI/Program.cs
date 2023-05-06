@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Room2_NorthwindAPI.Data.Repositories;
+using Room2_NorthwindAPI.Data.Repository;
 using Room2_NorthwindAPI.Models;
 using Room2_NorthwindAPI.Services;
 
@@ -12,28 +13,27 @@ var dbConnection = builder.Configuration.GetConnectionString("DefaultConnection"
 builder.Services.AddDbContext<NorthwindContext>(
 opt => opt.UseSqlServer(dbConnection));
 
-
-
 builder.Services.AddControllers()
     .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
 builder.Services.AddEndpointsApiExplorer();
-//builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped(typeof(INorthwindRepository), typeof(NorthwindRepository));
-builder.Services.AddScoped(typeof(INorthwindService), typeof(NorthwindService));
-builder.Services.AddScoped<INorthwindRepository, EmployeesRepository>();
+builder.Services.AddScoped(typeof(INorthwindService<Employee>), typeof(EmployeeService));
 
+builder.Services.AddScoped(typeof(INorthwindRepository<>), typeof(NorthwindRepository<>));
+builder.Services.AddScoped(typeof(INorthwindService<>), typeof(NorthwindService<>));
 
+builder.Services.AddScoped<INorthwindRepository<Employee>, EmployeesRepository>();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    //app.UseSwagger();
-    //app.UseSwaggerUI();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();

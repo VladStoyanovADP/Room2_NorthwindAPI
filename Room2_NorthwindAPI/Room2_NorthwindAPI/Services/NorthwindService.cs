@@ -1,91 +1,87 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Room2_NorthwindAPI.Data.Repositories;
-using Room2_NorthwindAPI.Models;
 
 namespace Room2_NorthwindAPI.Services;
 
-public class NorthwindService : INorthwindService
+public class NorthwindService<T> : INorthwindService<T> where T : class
 {
-    private readonly INorthwindRepository _repository;
+    private readonly ILogger _logger;
+    private readonly INorthwindRepository<T> _repository;
 
-    public NorthwindService(INorthwindRepository repository)
+    public NorthwindService(ILogger<INorthwindService<T>> logger, INorthwindRepository<T> repository)
     {
+        _logger = logger;
         _repository = repository;
     }
-   
-    public async Task<bool> CreateAsync(Employee entity)
+
+    public async Task<bool> CreateAsync(T entity)
     {
-        if(_repository is null)
+        if (_repository.IsNull)
         {
             return false;
         }
         _repository.Add(entity);
         await _repository.SaveAsync();
         return true;
-
     }
 
     public async Task<bool> DeleteAsync(int id)
     {
-        var employeeToDelete = await _repository.FindAsync(id);
-
-        if(employeeToDelete is null)
+        if (_repository.IsNull)
+        {
+            return false;
+        }
+        var entity = await _repository.FindAsync(id);
+        if (entity == null)
         {
             return false;
         }
 
-        _repository.Remove(employeeToDelete);
+        _repository.Remove(entity);
 
         await _repository.SaveAsync();
 
         return true;
-
-
     }
 
-    public async Task<IEnumerable<Employee>?> GetAllAsync()
+    public async Task<IEnumerable<T>?> GetAllAsync()
     {
         if (_repository.IsNull)
         {
             return null;
         }
-        else
-        {
-            return await _repository.GetAllAsync();
-        }
+        return await _repository.GetAllAsync();
 
     }
 
-    public async Task<Employee?> GetAsync(int id)
+    public async Task<T?> GetAsync(int id)
     {
-        if(_repository.IsNull)
+        if (_repository.IsNull)
         {
             return null;
         }
+        var entity = await _repository.FindAsync(id);
 
-        Employee employee = await _repository.FindAsync(id);
-
-        if(employee is null)
+        if (entity == null)
         {
+            _logger.LogWarning($"{typeof(T).Name} with id: {id} not found");
             return null;
         }
-
-        return employee;
-
-
+        _logger.LogInformation($"{typeof(T).Name} with id: {id}  found");
+        return entity;
     }
 
-    public async Task<bool> UpdateAsync(int id, Employee entity)
+    public virtual async Task<bool> UpdateAsync(int id, T entity)
     {
-        var employeeToUpdate = await _repository.FindAsync(id);
-        _repository.Update(employeeToUpdate);
+        _repository.Update(entity);
+
         try
         {
             await _repository.SaveAsync();
         }
-        catch(DbUpdateConcurrencyException)
+        catch (DbUpdateConcurrencyException)
         {
-            if (!await EmployeeExists(id))
+            if (!await EntityExists(id))
             {
                 return false;
             }
@@ -93,15 +89,13 @@ public class NorthwindService : INorthwindService
             {
                 throw;
             }
-
         }
 
         return true;
-
     }
 
-    private async Task<bool> EmployeeExists(int id)
+    private async Task<bool> EntityExists(int id)
     {
-        return (await _repository.FindAsync(id)) is null;
+        return (await _repository.FindAsync(id)) != null;
     }
 }
