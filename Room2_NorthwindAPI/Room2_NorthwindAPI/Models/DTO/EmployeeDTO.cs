@@ -21,4 +21,7 @@ public class EmployeeDTO
     public string? Region { get; set; }
 
     public string? Location => $"{City}, {PostalCode}, {Country}";
+
+    public List<LinkDTO> Links { get; set; }
+
 }

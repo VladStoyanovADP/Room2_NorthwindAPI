@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Routing;
 using Room2_NorthwindAPI.Models;
 using Room2_NorthwindAPI.Models.DTO;
 using Room2_NorthwindAPI.Services;
@@ -29,9 +30,11 @@ namespace Room2_NorthwindAPI.Controllers
                 return NotFound();
             }
 
-            return employees
+            var employeeDTOs = employees
                 .Select(e => Utils.EmployeeToDTO(e))
                 .ToList();
+
+            return employeeDTOs;
         }
 
         // GET: api/Employees/5
