@@ -125,11 +125,12 @@ The endpoints implemented, following the CRUD approach, are as follows:
 	  "address": "string",
 	} 
 	```
-      "employeeId": 20,
-      "lastName": "string",
-      "firstName": "string",
-      "title": "string",
-      "titleOfCourtesy": "string",
+	{
+	      "employeeId": 20,
+	      "lastName": "string",
+	      "firstName": "string",
+	      "title": "string",
+	      "titleOfCourtesy": "string",
 	}
 	```
 	
@@ -138,12 +139,8 @@ The endpoints implemented, following the CRUD approach, are as follows:
 	
 	
 ## Contributors
-
-- `DELETE` Employee: Deletion of an existing employee
-	* `http://localhost/api/Employees/{employeeId}`
  - [Matthew Handley](https://github.com/MHandley10) - Testing and Model Architecture
  - [Ahmed Idris](https://github.com/coffeeandcodee) - GET Methods and Services Deployment
-## Contributors
  - [Daniel Manu](https://github.com/DanielManuM) - Scrum Master
  - [Philip Thomas](https://github.com/philipthomas6w) - Repositories Implementation
  - [Ahmed Bader](https://github.com/AhmedBader97) - POST and PUT Methods
@@ -156,7 +153,6 @@ The endpoints implemented, following the CRUD approach, are as follows:
 [Trello board](https://trello.com/b/qw9za4x1/apiproject)
 
 [Retrospective](https://metroretro.io/BOI6HWNUEIKP)
-[Trello board](https://trello.com/b/qw9za4x1/apiproject)
 
 [Retrospective](https://metroretro.io/BOI6HWNUEIKP)
 
