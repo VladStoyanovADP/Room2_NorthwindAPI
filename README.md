@@ -55,15 +55,8 @@ The endpoints implemented, following the CRUD approach, are as follows:
 		    "method": "PUT"
 		},
 		{
-		    "href": "api/employees/3",
-		    "rel": "delete_employee",
-		    "method": "DELETE"
-		}
-	    ]
-	}
-	```
-	
-- `POST` Employee: Creation of a new employee
+		
+		- `POST` Employee: Creation of a new employee
 	* `http://localhost/api/Employees`
 	* Must include First and Last Name (other fields are optional)
 	* Example input:
@@ -78,6 +71,15 @@ The endpoints implemented, following the CRUD approach, are as follows:
 	  "address": "string",
 	} 
 	```
+		    "href": "api/employees/3",
+		    "rel": "delete_employee",
+		    "method": "DELETE"
+		}
+	    ]
+	}
+	```
+	
+
 
 - `PUT` Employee Details: Updates the details of a specific employee
 	* `http://localhost/api/employees/{employeeId}`
