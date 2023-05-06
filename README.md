@@ -1,3 +1,4 @@
+
 # API Project
 
 ## Project Overview
@@ -6,7 +7,7 @@ This API enables users to retrieve and manipulate information over HTTP about th
 ### Application Dependencies
 
 | Dependency                                | Version           | Description                                            | Docs                                                                                     |
-| --------------  | -------| -------------------------------------- | ---------------- |
+| ----------------------------------------  | -----------------| ------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
 | AspNetCore.Mvc.NewtonsoftJson             | v.7.0.5 or later | JSON support for ASP.NET Core MVC using Newtonsoft.Json library. | https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.NewtonsoftJson/           |
 | AspNetCore.OpenApi                        | v.7.0.5 or later | Generate OpenAPI docs and UI for ASP.NET Core APIs.    | https://www.nuget.org/packages/Microsoft.AspNetCore.OpenApi/                          |
 | EntityFrameworkCore                       | v.7.0.5 or later | ORM for database access in .NET apps.                 | https://www.nuget.org/packages/Microsoft.EntityFrameworkCore                          |
@@ -25,7 +26,8 @@ To setup the project, clone this repository and run Program.cs (make sure to exe
 ## Endpoints
 The endpoints implemented, following the CRUD approach, are as follows:
 
-
+- `GET` Employees: Request the data of all employees
+	* `http://localhost/api/employees`
 - `GET` Employee By Id: Get the data associated with a specific employee
 	* `http://localhost/api/employees/{employeeId}`
 	* Example output:
@@ -53,8 +55,15 @@ The endpoints implemented, following the CRUD approach, are as follows:
 		    "method": "PUT"
 		},
 		{
-		
-		- `POST` Employee: Creation of a new employee
+		    "href": "api/employees/3",
+		    "rel": "delete_employee",
+		    "method": "DELETE"
+		}
+	    ]
+	}
+	```
+	
+- `POST` Employee: Creation of a new employee
 	* `http://localhost/api/Employees`
 	* Must include First and Last Name (other fields are optional)
 	* Example input:
@@ -69,18 +78,6 @@ The endpoints implemented, following the CRUD approach, are as follows:
 	  "address": "string",
 	} 
 	```
-		    "href": "api/employees/3",
-		    "rel": "delete_employee",
-		    "method": "DELETE"
-		}
-	    ]
-	}
-	
-- `DELETE` Employee: Deletion of an existing employee
-	* `http://localhost/api/Employees/{employeeId}`
-
-- `GET` Employees: Request the data of all employees
-	* `http://localhost/api/employees`
 
 - `PUT` Employee Details: Updates the details of a specific employee
 	* `http://localhost/api/employees/{employeeId}`
@@ -94,6 +91,10 @@ The endpoints implemented, following the CRUD approach, are as follows:
       "titleOfCourtesy": "string",
 	}
 	```
+	
+- `DELETE` Employee: Deletion of an existing employee
+	* `http://localhost/api/Employees/{employeeId}`
+	
 	
 ## Contributors
 
