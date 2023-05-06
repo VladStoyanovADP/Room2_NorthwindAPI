@@ -26,8 +26,7 @@ To setup the project, clone this repository and run Program.cs (make sure to exe
 ## Endpoints
 The endpoints implemented, following the CRUD approach, are as follows:
 
-- `GET` Employees: Request the data of all employees
-	* `http://localhost/api/employees`
+
 - `GET` Employee By Id: Get the data associated with a specific employee
 	* `http://localhost/api/employees/{employeeId}`
 	* Example output:
@@ -80,6 +79,9 @@ The endpoints implemented, following the CRUD approach, are as follows:
 	
 - `DELETE` Employee: Deletion of an existing employee
 	* `http://localhost/api/Employees/{employeeId}`
+
+- `GET` Employees: Request the data of all employees
+	* `http://localhost/api/employees`
 
 - `PUT` Employee Details: Updates the details of a specific employee
 	* `http://localhost/api/employees/{employeeId}`
