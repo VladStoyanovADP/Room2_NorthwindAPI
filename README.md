@@ -8,13 +8,13 @@ This API enables users to retrieve and manipulate information over HTTP about th
 
 | Dependency | Version         | Description                        | Docs                                                              |
 | ---------- | --------------- | ---------------------------------- | ----------------------------------------------------------------- |
-| Microsoft.AspNetCore.Mvc.NewtonsoftJson        | v.7.0.5 or later | JSON support for ASP.NET Core MVC using Newtonsoft.Json library.     | https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.NewtonsoftJson/ |
-| Microsoft.AspNetCore.OpenApi     | v.7.0.5 or later | Generate OpenAPI docs and UI for ASP.NET Core APIs.        | https://www.nuget.org/packages/Microsoft.AspNetCore.OpenApi/                              |
-| Microsoft.EntityFrameworkCore    | v.7.0.5 or later | ORM for database access in .NET apps.          | https://www.nuget.org/packages/Microsoft.EntityFrameworkCore                             |
-| Microsoft.EntityFrameworkCore.InMemory       | v.7.0.5  or later | In-memory database provider for testing and dev.      | https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.InMemory            |
-| Microsoft.EntityFrameworkCore.SqlServer  | v.7.0.5  or later | SQL Server database provider for Entity Framework Core.                 | https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer                           |                                                           |
-| Microsoft.EntityFrameworkCore.Tools        | v.7.0.5 or later | Tools for Entity Framework Core, including migrations and scaffolding.     | https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools |
-| Microsoft.VisualStudio.Web.CodeGeneration.Design     | v.7.0.6 or later | Design-time tools for code generation in Visual Studio.        | https://www.nuget.org/packages/Microsoft.VisualStudio.Web.CodeGeneration.Design/                              |
+| AspNetCore.Mvc.NewtonsoftJson        | v.7.0.5 or later | JSON support for ASP.NET Core MVC using Newtonsoft.Json library.     | https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.NewtonsoftJson/ |
+| AspNetCore.OpenApi     | v.7.0.5 or later | Generate OpenAPI docs and UI for ASP.NET Core APIs.        | https://www.nuget.org/packages/Microsoft.AspNetCore.OpenApi/                              |
+| EntityFrameworkCore    | v.7.0.5 or later | ORM for database access in .NET apps.          | https://www.nuget.org/packages/Microsoft.EntityFrameworkCore                             |
+| EntityFrameworkCore.InMemory       | v.7.0.5  or later | In-memory database provider for testing and dev.      | https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.InMemory            |
+| EntityFrameworkCore.SqlServer  | v.7.0.5  or later | SQL Server database provider for Entity Framework Core.                 | https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer                           |                                                           |
+| EntityFrameworkCore.Tools        | v.7.0.5 or later | Tools for Entity Framework Core, including migrations and scaffolding.     | https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools |
+| VisualStudio.Web.CodeGeneration.Design     | v.7.0.6 or later | Design-time tools for code generation in Visual Studio.        | https://www.nuget.org/packages/Microsoft.VisualStudio.Web.CodeGeneration.Design/                              |
 | Moq         | v4.18.4  or later | Mock object framework for .NET unit testing.      | https://www.nuget.org/packages/Moq                                 |
 | Newtonsoft.Json    | v.13.0.3 or later | Popular JSON library for .NET applications.          | https://www.nuget.org/packages/Newtonsoft.Json/                             |
 | Swashbuckle.AspNetCore       | v.6.5.0  or later | Generate OpenAPI docs and UI for ASP.NET Core APIs.      | https://www.nuget.org/packages/Swashbuckle.AspNetCore            |
