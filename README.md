@@ -63,7 +63,7 @@ The endpoints implemented, following the CRUD approach, are as follows:
 	}
 	```
 	
-- `POST Employee`: Creation of a new employee
+- `POST` Employee: Creation of a new employee
 	* `http://localhost/api/Employees`
 	* Must include First and Last Name (other fields are optional)
 	* Example input:
