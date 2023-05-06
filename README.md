@@ -33,16 +33,16 @@ The endpoints implemented, following the CRUD approach, are as follows:
 	* Example output:
 	```JSON
 	{
-	    "lastName": "Leverling",
-	    "firstName": "Janet",
-	    "title": "Sales Representative",
-	    "titleOfCourtesy": "Ms.",
-	    "fullName": "Ms. Janet Leverling, Ms.",
-	    "city": "Kirkland",
-	    "postalCode": "98033",
-	    "country": "USA",
-	    "region": null,
-	    "location": "Kirkland, 98033, USA",
+	    "lastName": "string",
+	    "firstName": "string",
+	    "title": "string",
+	    "titleOfCourtesy": "string.",
+	    "fullName": "string",
+	    "city": "string",
+	    "postalCode": "string",
+	    "country": "string",
+	    "region": string,
+	    "location": "string",
 	    "links": [
 		{
 		    "href": "api/employees/3",
