@@ -73,8 +73,8 @@ The endpoints implemented, following the CRUD approach, are as follows:
 	  "firstName": "string",
 	  "title": "string",
 	  "titleOfCourtesy": "string",
-	  "birthDate": "2023-04-05T09:15:04.504Z",
-	  "hireDate": "2023-04-05T09:15:04.504Z",
+	  "birthDate": "2000-05-10T14:30:12.908Z",
+	  "hireDate": "2023-05-10T14:30:12.908Z",
 	  "address": "string",
 	} 
 	```
