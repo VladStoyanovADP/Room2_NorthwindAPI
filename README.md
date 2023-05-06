@@ -96,9 +96,6 @@ The endpoints implemented, following the CRUD approach, are as follows:
 	}
 	```
 	
-
-	
-	
 ## Contributors
 
  - [Matthew Handley](https://github.com/MHandley10) - Testing and Model Architecture
