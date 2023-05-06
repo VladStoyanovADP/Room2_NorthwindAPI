@@ -32,35 +32,35 @@ The endpoints implemented, following the CRUD approach, are as follows:
 	* `http://localhost/api/employees/{employeeId}`
 	* Example output:
 	```JSON
-{
-    "lastName": "Leverling",
-    "firstName": "Janet",
-    "title": "Sales Representative",
-    "titleOfCourtesy": "Ms.",
-    "fullName": "Ms. Janet Leverling, Ms.",
-    "city": "Kirkland",
-    "postalCode": "98033",
-    "country": "USA",
-    "region": null,
-    "location": "Kirkland, 98033, USA",
-    "links": [
-        {
-            "href": "api/employees/3",
-            "rel": "self",
-            "method": "GET"
-        },
-        {
-            "href": "api/employees/3",
-            "rel": "update_employee",
-            "method": "PUT"
-        },
-        {
-            "href": "api/employees/3",
-            "rel": "delete_employee",
-            "method": "DELETE"
-        }
-    ]
-}
+	{
+	    "lastName": "Leverling",
+	    "firstName": "Janet",
+	    "title": "Sales Representative",
+	    "titleOfCourtesy": "Ms.",
+	    "fullName": "Ms. Janet Leverling, Ms.",
+	    "city": "Kirkland",
+	    "postalCode": "98033",
+	    "country": "USA",
+	    "region": null,
+	    "location": "Kirkland, 98033, USA",
+	    "links": [
+		{
+		    "href": "api/employees/3",
+		    "rel": "self",
+		    "method": "GET"
+		},
+		{
+		    "href": "api/employees/3",
+		    "rel": "update_employee",
+		    "method": "PUT"
+		},
+		{
+		    "href": "api/employees/3",
+		    "rel": "delete_employee",
+		    "method": "DELETE"
+		}
+	    ]
+	}
 	```
 	
 - `POST Employee`: Creation of a new employee
