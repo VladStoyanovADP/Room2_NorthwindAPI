@@ -112,4 +112,4 @@ The endpoints implemented, following the CRUD approach, are as follows:
 
 [Retrospective](https://metroretro.io/BOI6HWNUEIKP)
 
-[Presentation] (https://www.canva.com/design/DAFiKdYun6E/NfkBmC7xZGBs0W-ttJipAw/view?utm_content=DAFiKdYun6E&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)
+[Presentation](https://www.canva.com/design/DAFiKdYun6E/NfkBmC7xZGBs0W-ttJipAw/view?utm_content=DAFiKdYun6E&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)
