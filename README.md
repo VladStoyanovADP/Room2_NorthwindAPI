@@ -21,7 +21,7 @@ This API enables users to retrieve and manipulate information over HTTP about th
 
 ## Setup
 
-To setup the project, clone this repository and run Program.cs (must have the Northwind database setup beforehand).
+To setup the project, clone this repository and run Program.cs (make sure to execute the sql file in the root of this project to setup the Northwind database first).
 
 ## Endpoints
 The endpoints implemented, following the CRUD approach, are as follows:
