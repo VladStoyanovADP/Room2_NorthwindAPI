@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Room2_NorthwindAPI.Data.Repositories;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Routing;
 using Room2_NorthwindAPI.Models;
+using Room2_NorthwindAPI.Models.DTO;
 using Room2_NorthwindAPI.Services;
 
 namespace Room2_NorthwindAPI.Controllers
@@ -15,14 +10,12 @@ namespace Room2_NorthwindAPI.Controllers
     [ApiController]
     public class EmployeesController : ControllerBase
     {
-        private readonly NorthwindContext _context;
-        //private readonly INorthwindRepository _employeesRepository; (not needed)
-        private readonly INorthwindService _employeeService;
-        
+        private readonly INorthwindService<Employee> _employeeService;
 
-        public EmployeesController(NorthwindContext context, INorthwindService employeeService)
+        public EmployeesController(
+            INorthwindService<Employee> employeeService
+            )
         {
-            _context = context;
             _employeeService = employeeService;
         }
 
@@ -31,17 +24,17 @@ namespace Room2_NorthwindAPI.Controllers
         public async Task<ActionResult<IEnumerable<EmployeeDTO>>> GetEmployees()
         {
             var employees = await _employeeService.GetAllAsync();
-            
-            /*foreach (var item in _employeeService.GetAllAsync().Result)
-            {
-                employees.Add(Utils.EmployeeToDTO(item));
-            }
-            return employees;*/
-            if (employees is null)
+
+            if (employees == null)
             {
                 return NotFound();
             }
-            return employees.Select(e => Utils.EmployeeToDTO(e)).ToList();
+
+            var employeeDTOs = employees
+                .Select(e => Utils.EmployeeToDTO(e))
+                .ToList();
+
+            return employeeDTOs;
         }
 
         // GET: api/Employees/5
@@ -54,60 +47,63 @@ namespace Room2_NorthwindAPI.Controllers
             {
                 return NotFound();
             }
+
             return Utils.EmployeeToDTO(employee);
         }
 
-        // PUT: api/Employees/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutEmployee(int id, [Bind("EmployeeId, Country, City, Region, PostalCode, Photo, Notes, ReportsTo, PhotoPath, InverseReportsToNavigation, ReportsToNavigation")] EmployeeDTO employeeDTO)
+<<<<<<< HEAD
+        public async Task<IActionResult> PutEmployee(
+            int id,
+            [Bind(
+            "EmployeeId",
+            "LastName",
+            "FirstName",
+            "Title",
+            "TitleOfCourtesy",
+            "BirthDate",
+            "HireDate",
+            "Address",
+            "City",
+            "PostalCode",
+            "Country",
+            "ReportsTo",
+            "HomePhone"
+            )] Employee employee)
         {
-            
-            //_context.Entry(employeeDTO).State = EntityState.Modified;  (idk)
-
-            var employee = await _employeeService.GetAsync(id);
-
-
-            if (employee is null) return NotFound();
-
-            employee.LastName = employeeDTO.LastName ?? employee.LastName;
-            employee.FirstName = employeeDTO.FirstName ?? employee.FirstName;
-            employee.Title = employeeDTO.Title ?? employee.Title;
-            employee.TitleOfCourtesy = employeeDTO.TitleOfCourtesy ?? employee.TitleOfCourtesy;
-            employee.Country = employeeDTO.Country ?? employee.Country;            
-            employee.City = employeeDTO.City ?? employee.City;            
-            employee.Region = employeeDTO.Region ?? employee.Region;            
-            employee.PostalCode = employeeDTO.PostalCode ?? employee.PostalCode;            
-            employee.Photo = employeeDTO.Photo ?? employee.Photo;            
-            employee.Notes = employeeDTO.Notes ?? employee.Notes;            
-            employee.ReportsTo = employeeDTO.ReportsTo ?? employee.ReportsTo;
-            employee.PhotoPath = employeeDTO.PhotoPath ?? employee.PhotoPath;
-            employee.InverseReportsToNavigation = employeeDTO.InverseReportsToNavigation ?? employee.InverseReportsToNavigation;
-            employee.ReportsToNavigation = employeeDTO.ReportsToNavigation ?? employee.ReportsToNavigation;
-
-
-            //bool valid = await _employeeService.UpdateAsync(id, employee);
-
-            if (await _employeeService.UpdateAsync(id, employee))
+            if (id != employee.EmployeeId)
             {
-                return NoContent();
-
+                return BadRequest();
             }
-            else return NotFound();
+
+            var updatedBool = await _employeeService.UpdateAsync(id, employee);
+
+            if (updatedBool == false) return NotFound();
+
+            return NoContent();
         }
 
         // POST: api/Employees
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Employee>> PostEmployee(Employee employee)
+        public async Task<ActionResult<Employee>> PostEmployee(
+            [Bind(
+            "LastName", 
+            "FirstName", 
+            "Title", 
+            "TitleOfCourtesy", 
+            "BirthDate", 
+            "HireDate", 
+            "Address", 
+            "City",
+            "PostalCode", 
+            "Country", 
+            "ReportsTo", 
+            "HomePhone"
+            )] Employee employee)
         {
-          if (_context.Employees == null)
-          {
-              return Problem("Entity set 'NorthwindContext.Employees'  is null.");
-          }
-            _context.Employees.Add(employee);
-            await _context.SaveChangesAsync();
-
+            var created = await _employeeService.CreateAsync(employee);
+            if (!created) return BadRequest();
             return CreatedAtAction("GetEmployee", new { id = employee.EmployeeId }, employee);
         }
 
@@ -115,25 +111,25 @@ namespace Room2_NorthwindAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteEmployee(int id)
         {
-            if (_context.Employees == null)
-            {
-                return NotFound();
-            }
-            var employee = await _context.Employees.FindAsync(id);
+            var employee = _employeeService.GetAsync(id).Result;
             if (employee == null)
             {
                 return NotFound();
             }
 
-            _context.Employees.Remove(employee);
-            await _context.SaveChangesAsync();
+            foreach (var order in employee.Orders)
+            {
+                order.EmployeeId = null;
+            }
+
+            var deleted = await _employeeService.DeleteAsync(id);
+
+            if (!deleted)
+            {
+                return NotFound();
+            }
 
             return NoContent();
-        }
-
-        private bool EmployeeExists(int id)
-        {
-            return (_context.Employees?.Any(e => e.EmployeeId == id)).GetValueOrDefault();
         }
     }
 }

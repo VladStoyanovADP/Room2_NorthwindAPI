@@ -1,31 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Room2_NorthwindAPI.Models;
+﻿namespace Room2_NorthwindAPI.Models;
 
 public partial class Employee
 {
-    // ID should be secret
     public int EmployeeId { get; set; }
 
-    //Name formatted as title, first name, last name, titleofcourtesy 
     public string LastName { get; set; } = null!;
 
     public string FirstName { get; set; } = null!;
 
     public string? Title { get; set; }
 
-    public string? TitleOfCourtesy { get; set; } 
+    public string? TitleOfCourtesy { get; set; }
 
-    // Birthday should be secret. Law requirement
     public DateTime? BirthDate { get; set; }
 
     public DateTime? HireDate { get; set; }
 
-    //SECRET. Law
     public string? Address { get; set; }
 
-    //Below details formatted into one 
     public string? City { get; set; }
 
     public string? Region { get; set; }
@@ -33,10 +25,9 @@ public partial class Employee
     public string? PostalCode { get; set; }
 
     public string? Country { get; set; }
-    //Secret
+
     public string? HomePhone { get; set; }
 
-    //Secret
     public string? Extension { get; set; }
 
     public byte[]? Photo { get; set; }
@@ -47,7 +38,10 @@ public partial class Employee
 
     public string? PhotoPath { get; set; }
 
-    public virtual ICollection<Employee> InverseReportsToNavigation { get; set; } = new List<Employee>();
+    public virtual ICollection<Employee> InverseReportsToNavigation { get; } = new List<Employee>();
+
+    public virtual ICollection<Order> Orders { get; } = new List<Order>();
 
     public virtual Employee? ReportsToNavigation { get; set; }
+
 }
