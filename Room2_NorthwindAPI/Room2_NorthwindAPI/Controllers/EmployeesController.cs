@@ -52,6 +52,7 @@ namespace Room2_NorthwindAPI.Controllers
         }
 
         [HttpPut("{id}")]
+<<<<<<< HEAD
         public async Task<IActionResult> PutEmployee(
             int id,
             [Bind(
