@@ -36,12 +36,12 @@ The endpoints implemented, following the CRUD approach, are as follows:
 	    "lastName": "string",
 	    "firstName": "string",
 	    "title": "string",
-	    "titleOfCourtesy": "string.",
+	    "titleOfCourtesy": "string",
 	    "fullName": "string",
 	    "city": "string",
 	    "postalCode": "string",
 	    "country": "string",
-	    "region": string,
+	    "region": "string",
 	    "location": "string",
 	    "links": [
 		{
