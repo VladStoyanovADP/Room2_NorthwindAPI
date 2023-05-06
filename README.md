@@ -1,3 +1,4 @@
+
 # API Project
 
 ## Project Overview
@@ -24,6 +25,27 @@ To setup the project, clone this repository and run Program.cs (make sure to exe
 
 ## Endpoints
 The endpoints implemented, following the CRUD approach, are as follows:
+
+- `GET` Employees: Request the data of all employees
+	* `http://localhost/api/employees`
+- `GET` Employee By Id: Get the data associated with a specific employee
+	* `http://localhost/api/employees/{employeeId}`
+	* Example output:
+	```JSON
+	{
+	    "lastName": "Leverling",
+	    "firstName": "Janet",
+	    "title": "Sales Representative",
+	    "titleOfCourtesy": "Ms.",
+	    "fullName": "Ms. Janet Leverling, Ms.",
+	    "city": "Kirkland",
+	    "postalCode": "98033",
+	    "country": "USA",
+	    "region": null,
+	    "location": "Kirkland, 98033, USA",
+	    "links": [
+		{
+		    "href": "api/employees/3",
 		    "rel": "self",
 		    "method": "GET"
 		},
@@ -62,27 +84,11 @@ The endpoints implemented, following the CRUD approach, are as follows:
 	* Example input:
 	```JSON
 	{
-- `POST` Employee: Creation of a new employee
-	* `http://localhost/api/Employees`
-	* Must include First and Last Name (other fields are optional)
-	* Example input:
-	 ```JSON
-	{
-	  "lastName": "string",
-	  "firstName": "string",
-	  "title": "string",
-	  "titleOfCourtesy": "string",
-	  "birthDate": "2023-04-05T09:15:04.504Z",
-	  "hireDate": "2023-04-05T09:15:04.504Z",
-	  "address": "string",
-	} 
-	```
-	{
-	      "employeeId": 20,
-	      "lastName": "string",
-	      "firstName": "string",
-	      "title": "string",
-	      "titleOfCourtesy": "string",
+      "employeeId": 20,
+      "lastName": "string",
+      "firstName": "string",
+      "title": "string",
+      "titleOfCourtesy": "string",
 	}
 	```
 	
@@ -91,6 +97,7 @@ The endpoints implemented, following the CRUD approach, are as follows:
 	
 	
 ## Contributors
+
  - [Matthew Handley](https://github.com/MHandley10) - Testing and Model Architecture
  - [Ahmed Idris](https://github.com/coffeeandcodee) - GET Methods and Services Deployment
  - [Daniel Manu](https://github.com/DanielManuM) - Scrum Master
@@ -101,10 +108,7 @@ The endpoints implemented, following the CRUD approach, are as follows:
 ## Related
 
 
-## Related
 [Trello board](https://trello.com/b/qw9za4x1/apiproject)
-
-[Retrospective](https://metroretro.io/BOI6HWNUEIKP)
 
 [Retrospective](https://metroretro.io/BOI6HWNUEIKP)
 
