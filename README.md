@@ -8,8 +8,10 @@ This API enables users to retrieve and manipulate information over HTTP about th
 
 | Dependency | Version         | Description                        | Docs                                                              |
 | ---------- | ----------- | ----------------------- | -------- |
-| AspNetCore.Mvc.NewtonsoftJson        | v.7.0.5 or later | JSON support for ASP.NET Core MVC using Newtonsoft.Json library.     | https://www.nuget.org/packages/
-Microsoft.AspNetCore.Mvc.NewtonsoftJson/ |
+| AspNetCore.Mvc.NewtonsoftJson        | v.7.0.5 or later | JSON support for ASP.NET Core MVC using Newtonsoft.Json library.     | 
+https://www.nuget.org/packages/
+Microsoft.AspNetCore
+.Mvc.NewtonsoftJson/ |
 | AspNetCore.OpenApi     | v.7.0.5 or later | Generate OpenAPI docs and UI for ASP.NET Core APIs.        | https://www.nuget.org/packages/Microsoft.AspNetCore.OpenApi/                              |
 | EntityFrameworkCore    | v.7.0.5 or later | ORM for database access in .NET apps.          | https://www.nuget.org/packages/Microsoft.EntityFrameworkCore                             |
 | EntityFrameworkCore.InMemory       | v.7.0.5  or later | In-memory database provider for testing and dev.      | https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.InMemory            |
