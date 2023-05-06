@@ -77,7 +77,6 @@ The endpoints implemented, following the CRUD approach, are as follows:
 		}
 	    ]
 	}
-	```
 	
 - `DELETE` Employee: Deletion of an existing employee
 	* `http://localhost/api/Employees/{employeeId}`
