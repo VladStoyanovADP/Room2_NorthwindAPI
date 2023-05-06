@@ -69,13 +69,13 @@ The endpoints implemented, following the CRUD approach, are as follows:
 	* Example input:
 	 ```JSON
 	{
-  "lastName": "string",
-  "firstName": "string",
-  "title": "string",
-  "titleOfCourtesy": "string",
-  "birthDate": "2023-04-05T09:15:04.504Z",
-  "hireDate": "2023-04-05T09:15:04.504Z",
-  "address": "string",
+	  "lastName": "string",
+	  "firstName": "string",
+	  "title": "string",
+	  "titleOfCourtesy": "string",
+	  "birthDate": "2023-04-05T09:15:04.504Z",
+	  "hireDate": "2023-04-05T09:15:04.504Z",
+	  "address": "string",
 	} 
 	```
 
