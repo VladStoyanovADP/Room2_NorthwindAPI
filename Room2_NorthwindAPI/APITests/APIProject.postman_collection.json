@@ -1,0 +1,152 @@
+{
+	"info": {
+		"_postman_id": "6af825f2-1108-464c-80a4-43e5d1b2410d",
+		"name": "APIProject",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27144128"
+	},
+	"item": [
+		{
+			"name": "https://localhost:7222/api/employees/3",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7222/api/employees/3",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7222",
+					"path": [
+						"api",
+						"employees",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:7222/api/employees",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"string\",\r\n    \"title\": \"string\",\r\n    \"titleOfCourtesy\": \"string\",\r\n    \"fullName\": \"string\",\r\n    \"city\": \"string\",\r\n    \"photoPath\": \"string\",\r\n    \"inverseReportsToNavigation\": [],\r\n    \"reportsToNavigation\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7222/api/employees",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7222",
+					"path": [
+						"api",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:7222/api/employees/15",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"lastName\": \"NEW\",\r\n    \"firstName\": \"string\",\r\n    \"title\": \"string\",\r\n    \"titleOfCourtesy\": \"string\",\r\n    \"fullName\": \"string\",\r\n    \"city\": \"string\",\r\n    \"region\": \"string\",\r\n    \"postalCode\": \"string\",\r\n    \"country\": \"string\",\r\n    \"location\": \"string\",\r\n    \"notes\": \"string\",\r\n    \"reportsTo\": 6,\r\n    \"photoPath\": \"string\",\r\n    \"inverseReportsToNavigation\": [],\r\n    \"reportsToNavigation\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7222/api/employees/15",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7222",
+					"path": [
+						"api",
+						"employees",
+						"15"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:7222/api/employees/9",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"employeeId\": 9,\r\n    \"lastName\": \"NEW\",\r\n    \"firstName\": \"BLAKE\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7222/api/employees/9",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7222",
+					"path": [
+						"api",
+						"employees",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:7222/api/employees",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"employeeId\": 9,\r\n    \"lastName\": \"NEW\",\r\n    \"firstName\": \"string\",\r\n    \"title\": \"string\",\r\n    \"titleOfCourtesy\": \"string\",\r\n    \"fullName\": \"string\",\r\n    \"city\": \"string\",\r\n    \"region\": \"string\",\r\n    \"postalCode\": \"string\",\r\n    \"country\": \"string\",\r\n    \"location\": \"string\",\r\n    \"notes\": \"string\",\r\n    \"reportsTo\": 6,\r\n    \"photoPath\": \"string\",\r\n    \"inverseReportsToNavigation\": [],\r\n    \"reportsToNavigation\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7222/api/employees",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7222",
+					"path": [
+						"api",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
