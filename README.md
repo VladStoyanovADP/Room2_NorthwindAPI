@@ -4,7 +4,7 @@
 ## Project Overview
 This API enables users to retrieve and manipulate information over HTTP about the employees within the Northwind database.
 
-### Application Dependencies
+## Application Dependencies
 
 | Dependency                                | Version           | Description                                            |
 | ----------------------------------------  | ----------------- | ------------------------------------------------------ |
