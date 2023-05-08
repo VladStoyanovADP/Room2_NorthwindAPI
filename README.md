@@ -6,8 +6,8 @@ This API enables users to retrieve and manipulate information over HTTP about th
 
 ### Application Dependencies
 
-| Dependency                                | Version           | Description                                            |                                                                                     |
-| ----------------------------------------  | -----------------| ------------------------------------------------------ |
+| Dependency                                | Version           | Description                                            | Docs                                                                                     |
+| ----------------------------------------  | -----------------| ------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
 | AspNetCore.Mvc.NewtonsoftJson             | v.7.0.5 or later | JSON support for ASP.NET Core MVC using Newtonsoft.Json library. |
 | AspNetCore.OpenApi                        | v.7.0.5 or later | Generate OpenAPI docs and UI for ASP.NET Core APIs.    |
 | EntityFrameworkCore                       | v.7.0.5 or later | ORM for database access in .NET apps.                 |
